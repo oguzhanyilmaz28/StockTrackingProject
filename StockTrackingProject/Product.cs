@@ -6,19 +6,11 @@ using System.Threading.Tasks;
 
 namespace StockTrackingProject
 {
-    internal class Product
+    public class Product : BaseEntity
     {
         private string name;
         private string type;
         private int quantity;
-        private Guid id;
-        public Guid Id
-        {
-            get
-            {
-                return id;
-            }
-        }
         public string Name
         {
             get
@@ -60,7 +52,11 @@ namespace StockTrackingProject
             this.Name = Name;
             this.Quantity = Quantity;
             this.Type = Type;
-            id = Guid.NewGuid();
+        }
+
+        public override string ToString()
+        {
+            return name + " " + quantity + " " + type;
         }
     }
 }

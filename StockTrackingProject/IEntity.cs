@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace StockTrackingProject
 {
-    public class ProductManager : BaseManager<Product>
+    public interface IEntity
     {
+        Guid Id { get; }
     }
 }

@@ -28,14 +28,15 @@ namespace StockTrackingProject
                 switch (process)
                 {
                     case "1":
-                        if (products.ProductQuantity() == 0)
+                        if (products.Count() == 0)
                         {
                             Console.WriteLine("There is no product.Please add the product first.");
                         }
                         else
                         {
-                            products.Print();
+                            products.ShowAll();
                         }
+                        Thread.Sleep(3500);
                         break;
 
                     case "2":
@@ -50,35 +51,36 @@ namespace StockTrackingProject
                         continue;
 
                     case "3":
-                        if (products.ProductQuantity() == 0)
+                        if (products.Count() == 0)
                         {
                             Console.WriteLine("There is no product.Please add the product first.");
                         }
                         else
                         {
-                            products.Print();
+                            products.ShowAll();
                             Console.WriteLine("Enter the number of the product you want to delete. ");
                             int index = Convert.ToInt32(Console.ReadLine());
-                            products.TakeOutIndex(index);
+                            products.RemoveIndex(index);
                             Console.WriteLine("The product has been successfully extracted.");
                         }
                         Thread.Sleep(1500);
                         continue;
 
                     case "4":
-                        if (products.ProductQuantity() == 0)
+                        if (products.Count() == 0)
                         {
                             Console.WriteLine("There is no product.Please add the product first.");
                         }
                         else
                         {
-                            products.Print();
+                            products.ShowAll();
                             Console.WriteLine("Enter the number of the product you want to update .");
                             int i = Convert.ToInt32(Console.ReadLine());
                             Product product = products.GetByIndex(i);
                             Console.WriteLine("Enter the  product new quantity:");
                             int x = Convert.ToInt32(Console.ReadLine());
-                            products.Update(product.Id, x);
+                            product.Quantity = x;
+                            products.Update(product);
                             Console.WriteLine("The product has been successfully updated.");
                         }
                         Thread.Sleep(1500);
